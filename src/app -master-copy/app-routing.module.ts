@@ -29,13 +29,6 @@ const routes: Routes = [
     }    
   },
   {
-    path: 'signup',
-    component: SignupComponent,
-    data: {    
-      title: 'Sign Up'    
-    }    
-  },
-  {
     path: 'home',
     component: HomeComponent,
     canActivate: [ AuthguardService ],

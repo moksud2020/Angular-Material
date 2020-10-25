@@ -1,0 +1,63 @@
+<mat-card>
+  <mat-card-content>
+      <img id="profile-img" class="profile-img-card" src="assets/images/avatar_2x.png" />
+      <form class="form-signin" (ngSubmit)="registerUser()" #registerForm="ngForm">
+        <mat-error *ngIf="error" class="alert alert-danger">{{error}}</mat-error> 
+        <mat-form-field class="full-width-input">       
+        <input matInput type="text" id="uname" class="form-control" name="uname" #uname="ngModel" [(ngModel)]="userObject.uname"
+          placeholder="Username" title="Please enter the username" autocomplete="off" required autofocus>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width-input">
+          <input matInput type="text" id="uemail" class="form-control" name="uemail" #uemail="ngModel" [(ngModel)]="userObject.uemail"
+          placeholder="Email" title="Please enter the email" autocomplete="off" required autofocus>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width-input">
+        <input matInput type="password" id="upass" class="form-control" name="upass" placeholder="Password"
+          title="Please enter the password" #upass="ngModel" autocomplete="off" [(ngModel)]="userObject.upass" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" id="confirmpass" class="form-control" name="confirmpass" placeholder="Confirm password"
+          title="Please re-enter the password" #uconfirmpass="ngModel" autocomplete="off" [(ngModel)]="confirmPass"
+          required>
+        </mat-form-field>
+        <br>
+        <button  mat-raised-button color="primary"  type="submit"
+          [disabled]="(uname?.errors?.required || upass?.errors?.required || uconfirmpass?.errors?.required) || (upass.value !== uconfirmpass.value)">Sign
+          up</button>
+          <p style="text-align:center;">Remember credentials? <a [routerLink]="['/login']">Login
+            here</a></p>
+        <p class="text-success" style="text-align:center;" *ngIf="errorMessage">{{errorMessage}}</p>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+<!--
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>Log In</h2>
+        <mat-error *ngIf="error" class="alert alert-danger">{{error}}</mat-error> 
+        <mat-error *ngIf="loginInvalid">
+          The username and password were not recognised
+        </mat-error>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Email" formControlName="username" required>
+          <mat-error>
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  -->

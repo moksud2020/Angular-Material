@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2>Log In</h2>
+      <mat-error *ngIf="error" class="alert alert-danger">{{error}}</mat-error> 
+      <mat-error *ngIf="loginInvalid">
+        The username and password were not recognised
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="username" required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput type="password" placeholder="Password" formControlName="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Login</button>
+    </form>
+    <mat-card-actions>
+      <mat-card-subtitle>
+        <a mat-button href="signup">Register</a>
+        <button mat-button style="padding: 1rem;" (click)="signInWithGoogle()">
+          <mat-icon style="width: 50px; height:30px"
+                      svgIcon="logo"></mat-icon> Login With Google
+          </button>  
+        <button type="button" (click)="fbLogin()" *ngIf="isLogging===false" mat-flat-button color="primary">Sign In With Facebook</button>
+      </mat-card-subtitle>
+   
+   <!--   <button class="btn btn-social-icon btn-linkedin" (click)="signInWithLinkedIn()"><span class="fa fa-linkedin"></span>Linkdin</button>-->
+  </mat-card-actions>  
+  <mat-card-content>
+    <div *ngIf="user" class="card text-center">
+      <div class="card-block"></div>
+      <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+      <div class="card-block">
+        <h4 class="card-title">{{ user.name }}</h4>
+        <p class="card-text">{{ user.email }}</p>
+      </div>
+    </div>
+    
+  </mat-card-content>
+  </mat-card-content>
+</mat-card>

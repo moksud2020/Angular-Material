@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://localhost:4200',
+  googleClientId: "",
 };

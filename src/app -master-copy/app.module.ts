@@ -19,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AuthguardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/auth.service';
-import { JwtModule } from '@auth0/angular-jwt';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -50,7 +49,7 @@ const config = new AuthServiceConfig([
   },
    {
      id: FacebookLoginProvider.PROVIDER_ID,
-     provider: new FacebookLoginProvider('')
+     provider: new FacebookLoginProvider('380042326333948')
    },
   // {
   //   id: LinkedInLoginProvider.PROVIDER_ID,
@@ -96,14 +95,7 @@ export function provideConfig() {
     MatButtonModule,
     HttpClientModule,
     HttpModule,
-    SocialLoginModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter,
-        headerName: 'x-auth-token'
-
-      }
-    })
+    SocialLoginModule
   ],
   entryComponents: [
     LoginComponent
